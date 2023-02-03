@@ -1,6 +1,8 @@
 
 
+
 import 'package:flutter/material.dart';
+import 'package:task_management_app/screens/add_new_task_screen.dart';
 import 'package:task_management_app/screens/cancel_task_screen.dart';
 import 'package:task_management_app/screens/completed_task_screen.dart';
 import 'package:task_management_app/screens/inprogress_task_screen.dart';
@@ -31,7 +33,20 @@ class _MainBottomNavBarState extends State<MainBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: reusableAppbar(context),
+
+      //
+      //
+      //floating action button
+      floatingActionButton: currentSelectedScreen ==0 ?FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () {
+          Navigator.pushNamed(context, AddNewTaskScreen.routeName);
+        },
+        child: Icon(Icons.add,),
+
+      ):const SizedBox(),
+
+      appBar: reusableAppbar(context,isTapable: true),
       //
       //.......................................
       //screen er vitor tmi current select screen ta k rakho

@@ -1,6 +1,9 @@
 
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../widgets/background_image.dart';
 import '../widgets/reusable_appbar.dart';
@@ -17,6 +20,10 @@ class ProfileUpdateScreen extends StatefulWidget {
 }
 
 class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
+
+  XFile? photofile;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +40,16 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                   Text('Update Profile',style:pageTitleTextStyle(),),
                   SizedBox(height: 24,),
                   InkWell(
-                    onTap: (){},
+                    onTap: () async {
+                      final ImagePicker image_picker = ImagePicker();
+                     final result = await image_picker.pickImage(source: ImageSource.gallery);
+                     if(result!=null){
+                       setState((){
+                         photofile = result;
+                       });
+
+                     }
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey),
@@ -45,7 +61,22 @@ class _ProfileUpdateScreenState extends State<ProfileUpdateScreen> {
                             padding: EdgeInsets.all(14),
                             decoration: BoxDecoration(color: Colors.grey),
                             child: const Text('Photo',style: TextStyle(color: Colors.white),),
-                          )
+                          ),
+                          //
+                          //
+                          // er mane holo photo file er ekta name dekhabe na hoy empty string dekhabe
+                          //
+                          //
+                          //Image.file(File(photofile?.path ?? '',),height: 30,width: 30,),
+                          
+                          //
+                          //
+                          // photofile ta jodi null thake taheole se null na niye faka '' string a chole jabe
+
+                          Expanded(child: Text(photofile?.name ?? '',maxLines: 2,),)
+
+                          // er mane bujay nullable na thakle photofile.name ta dekhabe
+
 
                         ],
                       ),

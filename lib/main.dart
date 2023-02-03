@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_management_app/screens/add_new_task_screen.dart';
 import 'package:task_management_app/screens/cancel_task_screen.dart';
 import 'package:task_management_app/screens/completed_task_screen.dart';
 import 'package:task_management_app/screens/forget_password_screen.dart';
@@ -40,8 +41,9 @@ class MyApp extends StatelessWidget {
         NewTaskScreen.routeName:(context)=>NewTaskScreen(),
         CompletedTaskScreen.routeName:(context)=>CompletedTaskScreen(),
         CancelTaskScreen.routeName:(context)=>CancelTaskScreen(),
-        InProgressTaskScreen.routeName:(context)=>InProgressTaskScreen(),
-        ProfileUpdateScreen.routeName:(context)=>ProfileUpdateScreen(),
+        InProgressTaskScreen.routeName:(context)=>const InProgressTaskScreen(),
+        ProfileUpdateScreen.routeName:(context)=>const ProfileUpdateScreen(),
+        AddNewTaskScreen.routeName:(context)=>const AddNewTaskScreen(),
 
 
 
