@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:task_management_app/screens/forget_password_screen.dart';
 import 'package:task_management_app/screens/main_bottom_navbar.dart';
+import 'package:task_management_app/screens/register_screen.dart';
 import 'package:task_management_app/widgets/background_image.dart';
 
 import '../widgets/reusable_elevated_button.dart';
@@ -69,7 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Don't Have an Account ?"),
-                      TextButton(onPressed: (){}, child: Text("Sign Up"))
+                      TextButton(onPressed: (){
+                        Navigator.pushNamed(context, RegisterScreen.routeName);
+                      }, child: Text("Sign Up"))
 
                     ],
                   )
