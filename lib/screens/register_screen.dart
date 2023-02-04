@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task_management_app/network_services/network_requester.dart';
 import 'package:task_management_app/widgets/background_image.dart';
 import 'package:task_management_app/widgets/reusable_elevated_button.dart';
@@ -123,6 +124,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                         });
                        if(result['status']== 'success'){
+                         /*
+                         * share preference er maddome amra decison nei
+                         * login kora ase kina
+                         * */
+                        /* final sharePrefs = await SharedPreferences.getInstance();
+                         sharePrefs.setString('gmail', result['data']['email']);
+                         sharePrefs.setString('gmail', result['data']['firstName']);
+                         sharePrefs.setString('gmail', result['data']['lastName']);
+                         sharePrefs.setString('token', result['token']);*/
+
                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registraction sucessful')));
                        }
                        /*

@@ -1,7 +1,12 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_management_app/main.dart';
+
+import '../screens/login_screen.dart';
 class NetworkRequester {
 
 
@@ -63,7 +68,17 @@ class NetworkRequester {
 
         return jsonDecode(response.body);
 
-      }else{
+      }else if(response.statusCode == 401){
+        final sharePrefs = await SharedPreferences.getInstance();
+        sharePrefs.clear();
+        Navigator.pushAndRemoveUntil(
+           MyApp.navigatorKey.currentState!.context,
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+                (route) => false);
+
+      }
+
+      else{
         print('Request failed');
       }
 

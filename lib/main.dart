@@ -18,12 +18,17 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: MyApp.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
