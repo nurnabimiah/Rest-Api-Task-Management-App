@@ -103,8 +103,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       obscureText: true,
                       decoration: textFiledinputDecoration('Password'),
                       validator: (value){
-                        if(value==null || value.isEmpty){
-                          return 'This filed must not be empty';
+                        if(value==null || value.isEmpty && value.length!=6){
+                          return 'Password Must be 6 character';
                         }
                         return null;
                       },
